@@ -1,0 +1,53 @@
+﻿@model Autor
+@{
+    ViewData["Title"] = "Autor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Autor</h1>
+
+<div class="card">
+    <div class="card-header">
+        Libros
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateAutor" asp-controller="Autor" method="post">
+            <input asp-for="IdAutor" type="hidden" />
+
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Name" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input data-provide="datepicker" class="form-control form-control-sm" asp-for="BirthDate" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Ciudad</label>
+                <select asp-for="IdCity" class="form-control form-control-sm" required>
+                    <option value="1">Bogotá</option>
+                    <option value="2">Medellín</option>
+                    <option value="3">Cali</option>
+                    <option value="4">Cúcuta</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control form-control-sm" asp-for="Email" required/>
+            </div>
+            <button type="submit" class="btn btn-success btn-sm">Agregar Autor</button>
+            <a asp-action="Index" asp-controller="Autor" class="btn btn-danger btn-sm">Regresar</a>
+        </form>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
+    });
+</script>
